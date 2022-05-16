@@ -92,7 +92,7 @@ if data[9] & 0x80:
 	A1M3 = 1
 else:
 	A1M3 = 0
-if data[10] & 0x80:
+if data[0x0a] & 0x80:
 	A1M4 = 1
 else:
 	A1M4 = 0
@@ -104,6 +104,10 @@ if data[0x0e] & 0x01:
 	A1IE = 1
 else:
 	A1IE = 0
+if data[0x0e] & 0x04:
+	INTCN = 1
+else:
+	INTCN = 0
 if data[0x0f] & 0x01:
 	A1F = 1
 else:
@@ -119,5 +123,5 @@ print("Date: %s %s %d, %d" % (getDayText(day), getMonthText(mon), date, year))
 print("Alarm 1 Time: %02d:%02d:%02d" % (almhours, almmins, almsecs))
 print("DYDT=%d A1M1=%d A1M2=%d A1M3=%d A1M4=%d" % (DYDT, A1M1, A1M2,
 	A1M3, A1M4))
-print("A1IE=%d A1F=%d OSF=%d" % (A1IE, A1F, OSF))
+print("A1IE=%d INTCN=%d A1F=%d OSF=%d" % (A1IE, INTCN, A1F, OSF))
 

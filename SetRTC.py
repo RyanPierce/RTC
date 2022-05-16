@@ -43,6 +43,10 @@ bus.write_byte_data(address, 0x04, dataOut[0x04])
 bus.write_byte_data(address, 0x05, dataOut[0x05])
 bus.write_byte_data(address, 0x06, dataOut[0x06])
 
+# Set INTCN - this turns on the second alarm (we don't use) and turns off
+# the square wave generator - which drops power from 1.5 uA to 600 nA
+bus.write_byte_data(address, 0x0e, dataIn[0x0e] | 0x04)
+
 # Clear the Oscillator Stop Flag as time is now valid
 bus.write_byte_data(address, 0x0f, dataIn[0x0f] & 0x7f)
 
